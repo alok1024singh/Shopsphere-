@@ -1,0 +1,50 @@
+<nav>
+    <div class="logo">
+        <h1>SHOPSPHERE</h1>
+    </div>
+    <div class="links">
+        {% if request.user.is_authenticated %}
+        {% if home %}
+        
+        <form method="GET" action="{% url 'home' %}">
+             <input type="text" name="search" placeholder="Search">
+             <button type="submit">Search</button>
+        </form>
+        <form method="GET" action="{% url 'home' %}">
+              <input type="submit" value="Trending" name="trending">
+        </form>
+
+        <form method="GET" action="{% url 'home' %}">
+              <input type="submit" value="Offer" name="offer">
+        </form>
+        {% endif %}
+        <a href="{% url 'home' %}">HOME</a>
+        <a href="{% url 'cart' %}">CART ({{cartproduct_count}})</a>
+        <a href="{% url 'profile' %}">PROFILE</a>
+        <a href="{% url 'logout_' %}">LOGOUT</a>
+        <a href="{% url 'support' %}">SUPPORT</a>
+        <a href="{% url 'about' %}">ABOUT</a>
+       {% else %}
+{% if home %}
+<form method="GET" action="{% url 'home' %}">
+    <input type="text" name="search" placeholder="Search">
+    <button type="submit">Search</button>
+</form>
+
+<form method="GET" action="{% url 'home' %}">
+    <input type="submit" value="Trending" name="trending">
+</form>
+
+<form method="GET" action="{% url 'home' %}">
+    <input type="submit" value="Offer" name="offer">
+</form>
+{% endif %}
+
+<a href="{% url 'home' %}">HOME</a>
+<a href="{% url 'login_' %}">LOGIN</a>
+<a href="{% url 'register' %}">REGISTER</a>
+<a href="{% url 'support' %}">SUPPORT</a>
+<a href="{% url 'about' %}">ABOUT</a>
+{% endif %}
+    </div>
+</nav>

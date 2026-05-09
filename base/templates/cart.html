@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'cart.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="cart-wrapper">
+
+  <div class="cart-header">
+    <h1 class="cart-title">MY CART</h1>
+    <span class="cart-count">{{ cartproducts|length }} item{{ cartproducts|length|pluralize }}</span>
+  </div>
+
+  <div class="cart-table-wrap">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Sl.No</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in cartproducts %}
+        <tr class="cart-row">
+
+          <td class="td-sl">{{ forloop.counter }}</td>
+
+          <td class="td-name">{{ i.pname }}</td>
+
+          <td class="td-category">
+            <span class="category-badge">{{ i.pcategory }}</span>
+          </td>
+
+          <td class="td-price">₹{{ i.price }}</td>
+
+          <td class="td-quantity">
+            <div class="quantity-control">
+              <a href="{% url 'increment' i.id %}" class="qty-btn qty-inc">+</a>
+              <span class="qty-value">{{ i.quantity }}</span>
+              <a href="{% url 'decrement' i.id %}" class="qty-btn qty-dec">−</a>
+            </div>
+          </td>
+
+          <td class="td-total">₹{{ i.totalprice }}</td>
+
+          <td class="td-remove">
+            <a href="{% url 'remove' i.id %}" class="btn-remove">REMOVE</a>
+          </td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cart-footer">
+    <div class="cart-total-wrap">
+      <span class="cart-total-label">TOTAL CART AMOUNT</span>
+      <span class="cart-total-amount">₹{{ TA }}</span>
+    </div>
+    <div class="cart-footer-actions">
+      <a href="{% url 'home' %}" class="btn-continue">CONTINUE SHOPPING</a>
+      <button class="btn-checkout">PROCEED TO CHECKOUT</button>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

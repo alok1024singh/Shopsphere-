@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="home-wrapper">
+
+  <div class="page-header">
+    <h1>HOME PAGE</h1>
+  </div>
+
+  <div class="category-bar">
+    {% for i in category %}
+    <form action="">
+      <input type="submit" value="{{ i }}" name="cat">
+    </form>
+    {% endfor %}
+  </div>
+
+  {% if no_match %}
+  <div class="no-match">
+    <h1>NO PRODUCT FOUND..!!</h1>
+  </div>
+  {% endif %}
+
+  <div class="product-grid">
+    {% for i in all_products %}
+
+    <div class="product-card">
+
+      <div class="product-image-wrap">
+        <img src="{{ i.pimage.url }}" alt="{{ i.pname }}">
+        {% if trend %}
+        <span class="badge badge-trend">Trending 🔥</span>
+        {% endif %}
+        {% if offer %}
+        <span class="badge badge-offer">50% Off</span>
+        {% endif %}
+      </div>
+
+      <div class="product-info">
+        <h2 class="product-name">{{ i.pname }}</h2>
+        <p class="product-desc">{{ i.pdesc }}</p>
+        <p class="product-price">₹{{ i.price }}</p>
+      </div>
+
+      <div class="product-actions">
+        <a href="{% url 'addtocart' i.id %}" class="btn-cart">ADD TO CART</a>
+      </div>
+
+    </div>
+
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}

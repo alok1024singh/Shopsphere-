@@ -1,0 +1,185 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'support.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="support-wrapper">
+
+  <!-- ── HERO SECTION ── -->
+  <div class="support-hero">
+    <div class="hero-tag">24/7 SUPPORT</div>
+    <h1 class="hero-title">HOW CAN WE<br><span class="hero-accent">HELP YOU?</span></h1>
+    <p class="hero-desc">
+      We're here to make your ShopSphere experience smooth and enjoyable.
+      Find answers, get in touch, or browse our FAQs below.
+    </p>
+    <div class="hero-line"></div>
+  </div>
+
+  <!-- ── CONTACT CARDS ── -->
+  <div class="support-section">
+    <div class="section-label">GET IN TOUCH</div>
+    <h2 class="section-title">Choose how you'd like to reach us</h2>
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <div class="contact-icon">✉</div>
+        <h3 class="contact-title">Email Us</h3>
+        <p class="contact-body">Send us your query and we'll get back to you within 24 hours.</p>
+        <a href="mailto:support@shopsphere.com" class="contact-link">support@shopsphere.com</a>
+      </div>
+
+      <div class="contact-card contact-card--featured">
+        <div class="contact-badge">FASTEST</div>
+        <div class="contact-icon">◎</div>
+        <h3 class="contact-title">Live Chat</h3>
+        <p class="contact-body">Chat with our support team in real time. Available Mon–Sat, 9am–6pm.</p>
+        <a href="#" class="btn-chat">START CHAT</a>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">☎</div>
+        <h3 class="contact-title">Call Us</h3>
+        <p class="contact-body">Prefer to talk? Our support line is open during business hours.</p>
+        <a href="tel:+911800000000" class="contact-link">+91 1800-000-000</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CONTACT FORM ── -->
+  <div class="support-section">
+    <div class="section-label">SEND A MESSAGE</div>
+    <div class="form-layout">
+
+      <div class="form-intro">
+        <h2 class="section-title">Tell us what's on your mind.</h2>
+        <p class="section-body">
+          Fill out the form and our team will review your message and respond
+          as quickly as possible — usually within one business day.
+        </p>
+        <div class="form-assurance">
+          <div class="assurance-item">
+            <span class="assurance-dot"></span>
+            <span>No spam, ever</span>
+          </div>
+          <div class="assurance-item">
+            <span class="assurance-dot"></span>
+            <span>Response within 24 hours</span>
+          </div>
+          <div class="assurance-item">
+            <span class="assurance-dot"></span>
+            <span>Your data stays private</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="support-form-card">
+        <form action="" method="POST">
+          {% csrf_token %}
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fname">FIRST NAME</label>
+              <input class="form-input" type="text" id="fname" name="fname" placeholder="Your first name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lname">LAST NAME</label>
+              <input class="form-input" type="text" id="lname" name="lname" placeholder="Your last name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">EMAIL</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">SUBJECT</label>
+            <select class="form-input form-select" id="subject" name="subject">
+              <option value="" disabled selected>Select a topic</option>
+              <option value="order">Order Issue</option>
+              <option value="payment">Payment Problem</option>
+              <option value="return">Return & Refund</option>
+              <option value="account">Account Help</option>
+              <option value="product">Product Query</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">MESSAGE</label>
+            <textarea
+              class="form-input form-textarea"
+              id="message"
+              name="message"
+              placeholder="Describe your issue or question in detail..."
+              rows="5"
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-submit" type="submit">SEND MESSAGE</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FAQ SECTION ── -->
+  <div class="support-section">
+    <div class="section-label">COMMON QUESTIONS</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-grid">
+
+      <div class="faq-card">
+        <h3 class="faq-question">How do I track my order?</h3>
+        <p class="faq-answer">Once your order is shipped, you'll receive a tracking link via email. You can also check your order status from your profile page.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3 class="faq-question">What is the return policy?</h3>
+        <p class="faq-answer">We accept returns within 7 days of delivery for most products. Items must be unused and in original packaging. Reach out to us to initiate a return.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3 class="faq-question">How do I reset my password?</h3>
+        <p class="faq-answer">Click "Forgot Password" on the login page, enter your username, and follow the instructions sent to your registered email address.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3 class="faq-question">Are my payment details secure?</h3>
+        <p class="faq-answer">Absolutely. We use industry-standard encryption for all transactions. We never store your card details on our servers.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3 class="faq-question">Can I change or cancel my order?</h3>
+        <p class="faq-answer">Orders can be modified or cancelled within 2 hours of placing them. After that, please contact support and we'll do our best to help.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3 class="faq-question">How long does delivery take?</h3>
+        <p class="faq-answer">Standard delivery takes 3–7 business days depending on your location. Express delivery options are available at checkout for faster shipping.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BOTTOM CTA ── -->
+  <div class="support-cta">
+    <div class="cta-inner">
+      <h2 class="cta-title">Still need help?</h2>
+      <p class="cta-sub">Our team is always ready to assist you with anything.</p>
+      <a href="mailto:support@shopsphere.com" class="btn-cta-primary">EMAIL SUPPORT</a>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

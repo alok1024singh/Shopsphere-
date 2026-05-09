@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'profile.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="profile-wrapper">
+
+  <div class="profile-header">
+    <h1 class="profile-title">MY PROFILE</h1>
+  </div>
+
+  <div class="profile-card">
+
+    <div class="profile-avatar">
+      <div class="avatar-circle">
+        <span class="avatar-initials">
+          {{ request.user.first_name|slice:":1" }}{{ request.user.last_name|slice:":1" }}
+        </span>
+      </div>
+      <div class="profile-username-display">
+        <h2 class="display-name">{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+        <span class="display-handle">@{{ request.user.username }}</span>
+      </div>
+    </div>
+
+    <div class="profile-divider"></div>
+
+    <div class="profile-details">
+
+      <div class="detail-row">
+        <span class="detail-label">USERNAME</span>
+        <span class="detail-value">{{ request.user.username }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">FIRST NAME</span>
+        <span class="detail-value">{{ request.user.first_name }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">LAST NAME</span>
+        <span class="detail-value">{{ request.user.last_name }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">EMAIL</span>
+        <span class="detail-value">{{ request.user.email }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">ACCOUNT STATUS</span>
+        <span class="detail-value status-verified">
+          {% if request.user.is_authenticated %}
+          ✔ Verified
+          {% else %}
+          ✘ Not Verified
+          {% endif %}
+        </span>
+      </div>
+
+    </div>
+
+    <div class="profile-divider"></div>
+
+    <div class="profile-actions">
+      <a href="{% url 'reset_pass' %}" class="btn-reset">RESET PASSWORD</a>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

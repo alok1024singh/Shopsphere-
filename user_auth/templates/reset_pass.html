@@ -1,0 +1,81 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'reset.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="reset-wrapper">
+
+  <div class="reset-header">
+    <h1 class="reset-title">RESET PASSWORD</h1>
+  </div>
+
+  <div class="reset-card">
+
+    {% if wrong %}
+    <div class="reset-alert alert-error">
+      <span class="alert-icon">✘</span>
+      <span class="alert-message">Old password is incorrect. Please try again.</span>
+    </div>
+    {% endif %}
+
+    {% if same %}
+    <div class="reset-alert alert-warning">
+      <span class="alert-icon">⚠</span>
+      <span class="alert-message">New password cannot be the same as the old password.</span>
+    </div>
+    {% endif %}
+
+    <div class="reset-form-wrap">
+      <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label class="form-label" for="username">USERNAME</label>
+          <input
+            class="form-input input-readonly"
+            type="text"
+            id="username"
+            value="{{ request.user.username }}"
+            readonly
+          >
+        </div>
+
+        {% if new_pass %}
+        <div class="form-group">
+          <label class="form-label" for="newpasw">NEW PASSWORD</label>
+          <input
+            class="form-input"
+            type="password"
+            name="newpasw"
+            id="newpasw"
+            placeholder="Enter new password"
+          >
+        </div>
+
+        {% else %}
+        <div class="form-group">
+          <label class="form-label" for="oldpasw">OLD PASSWORD</label>
+          <input
+            class="form-input"
+            type="password"
+            name="oldpasw"
+            id="oldpasw"
+            placeholder="Enter current password"
+          >
+        </div>
+        {% endif %}
+
+        <div class="form-actions">
+          <button class="btn-submit" type="submit">SUBMIT</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

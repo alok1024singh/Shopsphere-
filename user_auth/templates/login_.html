@@ -1,0 +1,70 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="login-wrapper">
+
+  <div class="login-header">
+    <h1 class="login-title">WELCOME BACK</h1>
+    <p class="login-subtitle">Sign in to your ShopSphere account</p>
+  </div>
+
+  <div class="login-card">
+
+    {% if status %}
+    <div class="login-alert">
+      <span class="alert-icon">✘</span>
+      <span class="alert-message">{{ status }}</span>
+    </div>
+    {% endif %}
+
+    <div class="login-form-wrap">
+      <form action="{% url 'login_' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label class="form-label" for="username">USERNAME</label>
+          <input
+            class="form-input"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your username"
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">PASSWORD</label>
+          <input
+            class="form-input"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+          >
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-submit" type="submit">SIGN IN</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="login-footer-links">
+      <a href="{% url 'forget_pass' %}" class="footer-link">Forgot Password?</a>
+      <div class="footer-divider"></div>
+      <p class="footer-text">Don't have an account?
+        <a href="{% url 'register' %}" class="footer-link accent-link">SIGN UP</a>
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

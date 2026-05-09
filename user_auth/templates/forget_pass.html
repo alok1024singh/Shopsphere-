@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'forget.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="forget-wrapper">
+
+  <div class="forget-header">
+    <h1 class="forget-title">FORGOT PASSWORD</h1>
+    <p class="forget-subtitle">Enter your username and we'll help you reset your password</p>
+  </div>
+
+  <div class="forget-card">
+
+    {% if error %}
+    <div class="forget-alert">
+      <span class="alert-icon">✘</span>
+      <span class="alert-message">No account found with that username. Please try again.</span>
+    </div>
+    {% endif %}
+
+    <div class="forget-form-wrap">
+      <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label class="form-label" for="username">USERNAME</label>
+          <input
+            class="form-input"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your username"
+          >
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-submit" type="submit">FIND ACCOUNT</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="forget-footer-links">
+      <p class="footer-text">Remembered your password?
+        <a href="{% url 'login_' %}" class="footer-link accent-link">SIGN IN</a>
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

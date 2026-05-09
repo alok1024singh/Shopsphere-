@@ -1,0 +1,126 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'about.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="about-wrapper">
+
+  <!-- ── HERO SECTION ── -->
+  <div class="about-hero">
+    <div class="hero-tag">EST. 2024</div>
+    <h1 class="hero-title">WE ARE<br><span class="hero-accent">SHOPSPHERE</span></h1>
+    <p class="hero-desc">
+      A modern e-commerce destination built for people who value quality,
+      convenience, and a seamless shopping experience.
+    </p>
+    <div class="hero-line"></div>
+  </div>
+
+  <!-- ── MISSION SECTION ── -->
+  <div class="about-section mission-section">
+    <div class="section-label">OUR MISSION</div>
+    <div class="mission-grid">
+      <div class="mission-text">
+        <h2 class="section-title">Shopping, reimagined for the modern world.</h2>
+        <p class="section-body">
+          At ShopSphere, we believe shopping should be effortless, enjoyable, and accessible
+          to everyone. We connect buyers with the best products across every category —
+          from everyday essentials to premium picks — all under one roof.
+        </p>
+        <p class="section-body">
+          Our platform is built with simplicity in mind, so you spend less time searching
+          and more time enjoying what you love.
+        </p>
+      </div>
+      <div class="mission-stats">
+        <div class="stat-card">
+          <span class="stat-number">10K+</span>
+          <span class="stat-label">Products Listed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">5K+</span>
+          <span class="stat-label">Happy Customers</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">99%</span>
+          <span class="stat-label">Satisfaction Rate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VALUES SECTION ── -->
+  <div class="about-section values-section">
+    <div class="section-label">WHAT WE STAND FOR</div>
+    <h2 class="section-title">Our Core Values</h2>
+    <div class="values-grid">
+
+      <div class="value-card">
+        <div class="value-icon">◈</div>
+        <h3 class="value-title">Quality First</h3>
+        <p class="value-body">Every product on ShopSphere is curated to meet high standards. We don't compromise on quality so you never have to.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">◎</div>
+        <h3 class="value-title">Customer Trust</h3>
+        <p class="value-body">Your trust is our foundation. We maintain complete transparency in pricing, shipping, and returns — no hidden surprises.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">◉</div>
+        <h3 class="value-title">Seamless Experience</h3>
+        <p class="value-body">From browsing to checkout, every step is designed to be fast, intuitive, and frictionless on any device.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">⬡</div>
+        <h3 class="value-title">Community Driven</h3>
+        <p class="value-body">We grow with our customers. Your feedback shapes our features, our catalog, and the future of ShopSphere.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── TEAM SECTION ── -->
+  <div class="about-section team-section">
+    <div class="section-label">THE PEOPLE BEHIND IT</div>
+    <h2 class="section-title">Meet the Team</h2>
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-avatar">AK</div>
+        <div class="team-info">
+          <h3 class="team-name">Alok Kumar</h3>
+          <span class="team-role">Founder & CEO</span>
+          <p class="team-bio">Visionary behind ShopSphere with a passion for building products people love.</p>
+        </div>
+      </div>
+
+     
+
+    </div>
+  </div>
+
+  <!-- ── CTA SECTION ── -->
+  <div class="about-cta">
+    <div class="cta-inner">
+      <h2 class="cta-title">Ready to start shopping?</h2>
+      <p class="cta-sub">Join thousands of happy customers on ShopSphere today.</p>
+      <div class="cta-actions">
+        <a href="{% url 'home' %}" class="btn-cta-primary">EXPLORE PRODUCTS</a>
+        <a href="{% url 'register' %}" class="btn-cta-secondary">CREATE ACCOUNT</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

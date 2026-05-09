@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'register.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="register-wrapper">
+
+  <div class="register-header">
+    <h1 class="register-title">CREATE ACCOUNT</h1>
+    <p class="register-subtitle">Join ShopSphere and start shopping</p>
+  </div>
+
+  <div class="register-card">
+
+    {% if status %}
+    <div class="register-alert">
+      <span class="alert-icon">✘</span>
+      <span class="alert-message">{{ status }}</span>
+    </div>
+    {% endif %}
+
+    <div class="register-form-wrap">
+      <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label class="form-label" for="fname">FIRST NAME</label>
+            <input
+              class="form-input"
+              type="text"
+              name="fname"
+              id="fname"
+              placeholder="Enter first name"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="lname">LAST NAME</label>
+            <input
+              class="form-input"
+              type="text"
+              name="lname"
+              id="lname"
+              placeholder="Enter last name"
+            >
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">EMAIL</label>
+          <input
+            class="form-input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="username">USERNAME</label>
+          <input
+            class="form-input"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Choose a username"
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">PASSWORD</label>
+          <input
+            class="form-input"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Create a password"
+          >
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-submit" type="submit">CREATE ACCOUNT</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="register-footer-links">
+      <p class="footer-text">Already have an account?
+        <a href="{% url 'login_' %}" class="footer-link accent-link">SIGN IN</a>
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
